@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    ports: ["8080:8080"]
+    volumes:
+      - seed-data:/data
+      - cron-output:/cron
+    environment:
+      - TZ=UTC
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    restart: unless-stopped
+volumes:
+  seed-data:
+  cron-output:
